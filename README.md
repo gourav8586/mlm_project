@@ -1,3 +1,6 @@
+# MLM Project
+
+![mlm image]("https://www.investopedia.com/thmb/OPjniKyH-NrKRanN1KvmwMFqthk=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/MLM-TAERM-ADD-SOURCE-16091bd51da945f28fbd9522f5a173d6.jpg")
 # GitHub Steps
 
 Follow these steps to add, commit, and push changes to your GitHub repository:
