@@ -41,9 +41,10 @@ exports.Update_user = async (req, res) => {
       state: state,
       gender: gender,
       city: city,
+      image: req.file.filename,
     }
   );
-
+ 
   console.log("User", update_data);
 
   if (update_data) {
