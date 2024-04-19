@@ -1,6 +1,9 @@
 const express = require("express");
 const app = express();
 const path = require("path");
+const dotenv = require("dotenv");
+dotenv.config();
+
 const cookieParser = require("cookie-parser");
 const { connectDB } = require("./db/dbconnection");
 app.use(express.static(path.join(__dirname, "/public")));
@@ -39,8 +42,7 @@ app.set("views", path.join(__dirname, "src/views"));
 // Connect to the database
 connectDB();
 
-// Start the server on port 4000
-const PORT = 7000;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
