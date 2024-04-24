@@ -9,7 +9,7 @@ exports.withdrawal_money = async (req, res) => {
 
   let user2 = await user.findOne({ auth_key: token });
 
-  if (!user2.wallet == "0") {
+  if (!(amount > user2.wallet)) {
     let data = await user.findOneAndUpdate(
       { auth_key: token },
       { wallet: user2.wallet - amount }

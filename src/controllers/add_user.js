@@ -1,4 +1,3 @@
-const { addUsers } = require("../services/add_users");
 const { addUsers2 } = require("../services/add_users2");
 
 exports.addUsers_frm = async (req, res) => {

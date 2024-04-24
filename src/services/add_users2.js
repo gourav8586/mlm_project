@@ -68,7 +68,7 @@ exports.addUsers2 = async (req, res) => {
     // console.log("userid ka parent--",Unlock_level.level);
     let mychild = Users.mychild;
 
-    if (Users.role === "Admin"){
+    if (Users.role === "Admin") {
       if (mychild == 2) {
         console.log("mere child level--", childLevels);
         if (childLevels.every((level) => level === 2)) {
@@ -96,7 +96,7 @@ exports.addUsers2 = async (req, res) => {
               addedBy: Users.userId,
               wallet: final_amount,
               mychild: 0,
-              direction:direction,
+              direction: direction,
             });
 
             let savedUser = await newUser.save();
@@ -192,12 +192,6 @@ exports.addUsers2 = async (req, res) => {
           };
         }
       } else {
-        let mychildID = Users.mychild + 1;
-        let mychildId = await user.findOneAndUpdate(
-          { auth_key: token },
-          { mychild: mychildID },
-          { new: true }
-        );
         if (!data) {
           let newUser = new user({
             userId: userId,
@@ -219,6 +213,13 @@ exports.addUsers2 = async (req, res) => {
           let savedUser = await newUser.save();
 
           if (newUser) {
+            let mychildID = Users.mychild + 1;
+            let mychildId = await user.findOneAndUpdate(
+              { auth_key: token },
+              { mychild: mychildID },
+              { new: true }
+            );
+
             let allchild_member = await user.findOne({ userId: 1 });
             let add_all_child = allchild_member.allchild + 1;
             let updatechilds = await user.findOneAndUpdate(
@@ -302,7 +303,7 @@ exports.addUsers2 = async (req, res) => {
           };
         }
       }
-    }else {
+    } else {
       if (Users.direction == "right") {
         let leftDirectionUser = await user.findOne({
           addedBy: Users.addedBy,
@@ -1981,7 +1982,7 @@ exports.addUsers2 = async (req, res) => {
   } catch (error) {
     console.error(error);
     return {
-      message: "Failed to save User",
+      message: "Failed to save User try catch error",
       data: [],
       success: false,
       status: 500,

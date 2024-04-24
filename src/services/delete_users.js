@@ -8,16 +8,18 @@ exports.del = async (req, res) => {
   let token = req.cookies.jwt;
   console.log(email);
 
+  let user_data = await user.findOne({ email: email });
   if (email) {
     let data = await user.deleteOne({ email: email });
     console.log("data deleted");
+    if(user_data.role==="Admin"){
     let data1 = await user.findOne({ userId: 1 });
     let update_all_childs = data1.allchild - 1;
     let data2 = await user.findOneAndUpdate(
       { auth_key: token },
       { allchild: update_all_childs }
     );
-
+  }
     return {
       data: data,
       success: true,
@@ -30,4 +32,5 @@ exports.del = async (req, res) => {
       status: 400,
     };
   }
+
 };

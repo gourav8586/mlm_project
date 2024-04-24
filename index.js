@@ -7,6 +7,7 @@ dotenv.config();
 const cookieParser = require("cookie-parser");
 const { connectDB } = require("./db/dbconnection");
 app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
